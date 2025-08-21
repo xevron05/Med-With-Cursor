@@ -1,0 +1,125 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: #444;
+    background-color: #f4f4f4;
+    width: auto;
+    overflow: hidden;
+
+}
+
+.openPrinting {
+    /*margin: 20px 20px 20px 100px;*/
+    /*marg-top: 20px;*/
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+#openPrinting{
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.openPrinting-popup{
+    background-color: white;
+    height: auto;
+    position: relative;
+
+}
+
+
+.header {
+    background-color: #3468C0;
+    color: #fff;
+    /*padding: 5px;*/
+    text-align: center;
+    width: auto;
+}
+
+.header h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.bill-body {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.form-label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.form-input {
+    display: flex;
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.btn-group {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #3468C0;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #204080;
+}
+
+.bill-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.bill-table th, .bill-table td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+}
+
+.bill-table th {
+    background-color: #3468C0;
+    color: #fff;
+}
+
+.bill-total {
+    font-weight: bold;
+    text-align: right;
+    padding-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+

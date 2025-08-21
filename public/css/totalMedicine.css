@@ -1,0 +1,155 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+header {
+    background-color: #3468C0;
+    color: white;
+    text-align: center;
+    width: 90%;
+    margin-top: 20px;
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #3468C0;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #214a8c;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #3468C0;
+    color: white;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #214a8c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0d2d5c;
+}
+
+.Footer{
+    text-align: center;
+    align-items: center;
+    width: 90%;
+    padding: 20px;
+    border-top: 1px solid rgb(46, 29, 122);
+    margin: 20px;
+}
+.Footer b{
+    color: #3468C0;
+}
+
+
+
+/*Pagination*/
+.page-info{
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.pagination a{
+    font-size: 14px;
+    text-decoration: none;
+    border: 2px solid #3468C0;
+    border-radius: 10px;
+    width: 40px;
+    /*height: 30px;*/
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pagination a:hover{
+    border: 2px solid #3468C0;
+}
+
+.pagination .page-numbers{
+    display: flex;
+    gap: 5px;
+}
+
+.active{
+    background-color: #3468C0;
+    /*border: 2px solid #3468C0;*/
+    color: white;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}
+
+
+

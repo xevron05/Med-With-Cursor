@@ -1,0 +1,131 @@
+body{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0%;
+}
+header {
+    background-color: #3468C0;
+    color: white;
+    text-align: center;
+    width: 90%;
+    margin: 20px 60px;
+    border-radius: 5px;
+    /*padding: 0.5px;*/
+}
+.existMedicine{
+}
+.success-color{
+    color: #45a049;
+    text-align: center;
+    align-items: center;
+}
+.failed-color{
+    color: red;
+    text-align: center;
+    align-items: center;
+}
+.low-stockBody{
+    margin: 30px;
+    box-shadow: 5px 3px 10px rgb(0 0 0 / 0.2);;
+}
+.low-stockBody table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.low-stockBody th, td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.low-stockBody th {
+    background-color: #3468C0;
+    color: white;
+}
+.low-stockBody .dateExpiry{
+    color: #ee0909;
+}
+
+.low-stockBody input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.low-stockBody input[type="submit"] {
+    background-color: #214a8c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.low-stockBody input[type="submit"]:hover {
+    background-color: #0d2d5c;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.close {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #555;
+}
+
+.takeOut {
+    background-color: #FF5733;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.actionButton{
+    display: flex;
+}
+
+.takeOut:hover {
+    background-color: #e0442f;
+}
+
+.Footer{
+    text-align: center;
+    align-items: center;
+    width: 93%;
+    padding: 20px;
+    border-top: 1px solid rgb(46, 29, 122);
+    margin: 20px;
+}
+.Footer b{
+    color: #3468C0;
+}
