@@ -319,6 +319,13 @@ input[type="submit"]:hover {
 }
 
 
+
+.batchEntry .import_date{
+    color: #333;
+    margin-left: 60%;
+}
+
+
 /*Pagination*/
 .page-info{
     margin: 15px 0;

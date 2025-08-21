@@ -12,6 +12,7 @@ require "../controller/medicine-data.php";
     <title>Medicine Details</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../public/css/detailsMedicine.css">
+    <script src="../public/js/jquery.js"></script>
 </head>
 <body>
 
@@ -151,19 +152,30 @@ require "../controller/medicine-data.php";
                     <input type="text" name="companyName" id="companyName" placeholder="Company Name" required>
                 </div>
                 <div class="unit">
-                    <input type="text" name="unit" id="unit" placeholder="Category" required>
-                </div>
-                <!-- <div class="unit">
-                    <select name="unit" id="unit" aria-placeholder="Category" require">
-                        <option value="Tablet">TABLET</option>
-                        <option value="Capsule">CAPUSLE</option>
-                        <option value="Syrup">SYRUP</option>
-                        <option value="Drop">DROP</option>
-                        <option value="Powder">POWDER</option>
-                        <option value="Cream">CREAM</option>
-                        <option value="Injection">INJECTION</option>
+                    <select name="unit" id="unit" required>
+                        <option value="TABLET">TABLET</option>
+                        <option value="CAPSULE">CAPSULE</option>
+                        <option value="SYRUP">SYRUP</option>
+                        <option value="SUSPENSION">SUSPENSION</option>
+                        <option value="DROP">DROP</option>
+                        <option value="INJECTION">INJECTION</option>
+                        <option value="OINTMENT">OINTMENT</option>
+                        <option value="CREAM">CREAM</option>
+                        <option value="GEL">GEL</option>
+                        <option value="LOTION">LOTION</option>
+                        <option value="POWDER">POWDER</option>
+                        <option value="GRANULE">GRANULE</option>
+                        <option value="SPRAY">SPRAY</option>
+                        <option value="INHALER">INHALER</option>
+                        <option value="SUPPOSITORY">SUPPOSITORY</option>
+                        <option value="SOLUTION">SOLUTION</option>
+                        <option value="EMULSION">EMULSION</option>
+                        <option value="PATCH">PATCH</option>
+                        <option value="SACHET">SACHET</option>
+                        <option value="AMPOULE">AMPOULE</option>
+                        <option value="VIAL">VIAL</option>
                     </select>
-                </div> -->
+                </div>
                 <div class="moneyType">
                     <select name="moneyType" id="moneyType" aria-placeholder="Select type" required>
                         <option value="Nepali">NPR</option>
@@ -187,6 +199,10 @@ require "../controller/medicine-data.php";
         <div class="batchEntry-popup">
             <span class="close" onclick="closeBatchEntry()">&times;</span>
         <h1>New Batch Entry of <span id="entryMedicineName"></span></h1>
+
+        <div class="import_date">
+          <label for="import_date" name="import_date">Import Date: <?php echo date('Y-m-d'); ?></label>
+        </div>
         <div class="upInfo">
             <div class="batchNo">
                 <label for="batch_No">Batch No: </label>
@@ -199,6 +215,14 @@ require "../controller/medicine-data.php";
             </div>
         </div>
         <div class="downInfo">
+            <div class="supplier">
+                <Label for="supplierId">Supplier:</Label>
+                <select name="supplierId" id="supplierId" required style="min-width:220px;"></select>
+            </div>
+            <!-- <div class="importDate">
+                <label for="importDate">Import Date: </label>
+                <input type="date" name="importDate" id="importDate" value="<?php echo date('Y-m-d'); ?>" required>
+            </div> -->
             <div class="quantity">
                 <label for="quantity">Quantity: </label>
 <input type="number" name="quantity" id="quantity" placeholder="Quantity" min="1" step="1" oninput="validity.valid||(value='');" required>
@@ -225,6 +249,11 @@ require "../controller/medicine-data.php";
         document.getElementById('entryMedicineName').innerText = medName;
         document.getElementById('medId').value = id;
         console.log(id);
+        // Default import date to today
+        const d = new Date().toISOString().slice(0,10);
+        document.getElementById('importDate').value = d;
+        // Load suppliers
+        loadSuppliers('');
     }
 
     function closeBatchEntry(){
@@ -299,8 +328,31 @@ require "../controller/medicine-data.php";
         }
     }
     
+    // supplier dropdown loader and search
+    function loadSuppliers(q){
+        $.get('../controller/suppliers.php', {format:'json', q}, function(rows){
+            const sel = document.getElementById('supplierId');
+            sel.innerHTML = '';
+            rows.forEach(r=>{
+                const opt = document.createElement('option');
+                opt.value = r.id; opt.textContent = r.name + (r.contact_person? (' - '+r.contact_person):'');
+                sel.appendChild(opt);
+            })
+        })
+    }
+    document.addEventListener('DOMContentLoaded', function(){
+        const filter = document.getElementById('supplierFilter');
+        if(filter){
+            filter.addEventListener('input', function(){ loadSuppliers(this.value); });
+        }
+    })
+    
 </script>
 <script src="../public/js/medicineDetails.js"></script>
+<script>
+// preload suppliers for dropdown even before opening
+$(function(){ loadSuppliers(''); })
+</script>
 
 </body>
 </html>

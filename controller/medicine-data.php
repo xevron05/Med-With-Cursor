@@ -29,11 +29,11 @@ $result = $conn->query($medicineFetchSqlMedicine);
 
 
 // For Sales
-$medicineFetchSqlSales = "SELECT * FROM medicines INNER JOIN medsoft.medicinebatch m on medicines.SN = m.MED_ID LIMIT $start, $rows_per_page";
+$medicineFetchSqlSales = "SELECT * FROM medicines INNER JOIN med_cursor.medicinebatch m on medicines.SN = m.MED_ID LIMIT $start, $rows_per_page";
 $done = $conn->query($medicineFetchSqlSales);
 
 // For low stock
-$medicineFetchSqlLowStock = "SELECT * FROM medicines INNER JOIN medsoft.medicinebatch m on medicines.SN = m.MED_ID WHERE m.QUANTITY <= 10";
+$medicineFetchSqlLowStock = "SELECT * FROM medicines INNER JOIN med_cursor.medicinebatch m on medicines.SN = m.MED_ID WHERE m.QUANTITY <= 10";
 $doneLowStock = $conn -> query($medicineFetchSqlLowStock);
 
 // For expiry date

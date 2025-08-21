@@ -1,6 +1,5 @@
 <?php session_start(); ?>
 <?php require "../controller/isLogin.php"; ?>
-<?php require "./Navigation.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">

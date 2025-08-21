@@ -1,7 +1,7 @@
 <?php
 require "../php-config/Connection.php";
 
-$records = $conn->query("SELECT * FROM medicines INNER JOIN medsoft.medicinebatch m on medicines.SN = m.MED_ID");
+$records = $conn->query("SELECT * FROM medicines INNER JOIN med_cursor.medicinebatch m on medicines.SN = m.MED_ID");
 
 $nr_of_rows = $records->num_rows;
 
@@ -23,7 +23,7 @@ if (isset($_GET['page-nr'])) {
 }
 
 // For Total Medicine details
-$medicineFetchSqlTotalMedicine = "SELECT * FROM medicines INNER JOIN medsoft.medicinebatch m on medicines.SN = m.MED_ID LIMIT $start, $rows_per_page";
+$medicineFetchSqlTotalMedicine = "SELECT * FROM medicines INNER JOIN med_cursor.medicinebatch m on medicines.SN = m.MED_ID LIMIT $start, $rows_per_page";
 $done = $conn->query($medicineFetchSqlTotalMedicine);
 
 

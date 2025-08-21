@@ -1,6 +1,8 @@
 <?php
-// Start the session
-session_start();
+// Start the session safely
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../php-config/Connection.php';
 //$row = '';
 if (isset($_SESSION['userId'])) {
@@ -11,4 +13,3 @@ if (isset($_SESSION['userId'])) {
         $row = $done->fetch_assoc();
 
 }
-

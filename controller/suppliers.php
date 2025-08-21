@@ -59,6 +59,42 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
     exit();
 }
 
+// Supplier import report API
+if (isset($_GET['format']) && $_GET['format'] === 'report') {
+    header('Content-Type: application/json');
+    $supplierId = (int)($_GET['supplier_id'] ?? 0);
+    $start = $_GET['start'] ?? null;
+    $end = $_GET['end'] ?? null;
+
+    // Ensure fields exist in medicinebatch for backward compatibility
+    $conn->query("ALTER TABLE medicinebatch ADD COLUMN IF NOT EXISTS supplier_id INT NULL");
+    $conn->query("ALTER TABLE medicinebatch ADD COLUMN IF NOT EXISTS import_date DATE NULL");
+
+    $where = "WHERE mb.supplier_id = ?";
+    if ($start && $end) { $where .= " AND mb.import_date BETWEEN ? AND ?"; }
+
+    $sql = "SELECT mb.QUANTITY AS import_qty, mb.MRP as rate, 0 AS discount, DATE_FORMAT(mb.import_date,'%Y-%m-%d') as import_date,
+                   mb.BATCHNUMBER as batch_no, m.MEDICINENAME as medicine_name
+            FROM medicinebatch mb
+            JOIN medicines m ON m.SN = mb.MED_ID
+            $where
+            ORDER BY mb.import_date DESC, mb.B_SN DESC";
+
+    if ($start && $end) {
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('iss', $supplierId, $start, $end);
+    } else {
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('i', $supplierId);
+    }
+    $stmt->execute();
+    $res = $stmt->get_result();
+    $rows = [];
+    while ($r = $res->fetch_assoc()) { $rows[] = $r; }
+    echo json_encode($rows);
+    exit();
+}
+
 // Default: redirect to view
 header('Location: ../views/Suppliers.php');
 exit();
